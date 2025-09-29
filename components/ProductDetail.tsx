@@ -15,15 +15,18 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const inStock = product.metadata?.in_stock ?? true
   const inventoryCount = product.metadata?.inventory_count
   const description = product.metadata?.description
+  
+  // Get current image safely
+  const currentImage = images[selectedImage]
 
   return (
     <div className="grid md:grid-cols-2 gap-12">
       <div>
-        {images.length > 0 ? (
+        {images.length > 0 && currentImage ? (
           <>
             <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-4">
               <img
-                src={`${images[selectedImage].imgix_url}?w=1200&h=1200&fit=crop&auto=format,compress`}
+                src={`${currentImage.imgix_url}?w=1200&h=1200&fit=crop&auto=format,compress`}
                 alt={product.title}
                 className="w-full h-full object-cover"
               />
