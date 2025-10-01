@@ -8,8 +8,47 @@ import CosmicBadge from '@/components/CosmicBadge'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'E-Commerce Store - Shop Quality Products',
-  description: 'Browse our curated collection of quality products with customer reviews',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  title: {
+    default: 'E-Commerce Store - Shop Quality Products Online',
+    template: '%s | E-Commerce Store'
+  },
+  description: 'Browse our curated collection of quality products with verified customer reviews. From fashion to accessories, find everything you need with fast shipping and excellent service.',
+  keywords: ['online shopping', 'quality products', 'e-commerce', 'fashion', 'accessories', 'customer reviews'],
+  authors: [{ name: 'E-Commerce Store' }],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: '/',
+    siteName: 'E-Commerce Store',
+    title: 'E-Commerce Store - Shop Quality Products Online',
+    description: 'Browse our curated collection of quality products with verified customer reviews',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'E-Commerce Store'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'E-Commerce Store - Shop Quality Products Online',
+    description: 'Browse our curated collection of quality products with verified customer reviews',
+    images: ['/og-image.jpg']
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 }
 
 export default function RootLayout({

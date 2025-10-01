@@ -1,4 +1,5 @@
 // app/collections/[slug]/page.tsx
+import type { Metadata } from 'next'
 import { getCollection, getProductsByCollection } from '@/lib/cosmic'
 import { Product, Collection } from '@/types'
 import ProductGrid from '@/components/ProductGrid'
@@ -8,6 +9,51 @@ interface CollectionPageProps {
   params: Promise<{
     slug: string
   }>
+}
+
+export async function generateMetadata({ params }: CollectionPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const collection = await getCollection(slug)
+
+  if (!collection) {
+    return {
+      title: 'Collection Not Found',
+      description: 'The collection you are looking for could not be found'
+    }
+  }
+
+  const typedCollection = collection as Collection
+  const collectionName = typedCollection.metadata?.name || typedCollection.title
+  const collectionDescription = typedCollection.metadata?.description || `Shop our ${collectionName} collection. Discover quality products curated just for you.`
+  
+  const collectionImage = typedCollection.metadata?.collection_image?.imgix_url
+  const ogImageUrl = collectionImage 
+    ? `${collectionImage}?w=1200&h=630&fit=crop&auto=format,compress`
+    : '/og-image.jpg'
+
+  return {
+    title: `${collectionName} Collection`,
+    description: collectionDescription,
+    openGraph: {
+      title: `${collectionName} Collection | E-Commerce Store`,
+      description: collectionDescription,
+      type: 'website',
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: collectionName
+        }
+      ]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${collectionName} Collection | E-Commerce Store`,
+      description: collectionDescription,
+      images: [ogImageUrl]
+    }
+  }
 }
 
 export default async function CollectionPage({ params }: CollectionPageProps) {

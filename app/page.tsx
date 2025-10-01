@@ -1,8 +1,33 @@
+import type { Metadata } from 'next'
 import { getProducts, getCollections } from '@/lib/cosmic'
 import { Product, Collection } from '@/types'
 import Hero from '@/components/Hero'
 import ProductGrid from '@/components/ProductGrid'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Home - Shop Quality Products Online',
+  description: 'Discover our featured products and curated collections. Shop the best deals on quality items with verified customer reviews and fast shipping.',
+  openGraph: {
+    title: 'E-Commerce Store - Shop Quality Products Online',
+    description: 'Discover our featured products and curated collections. Shop the best deals on quality items with verified customer reviews.',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'E-Commerce Store Homepage'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'E-Commerce Store - Shop Quality Products Online',
+    description: 'Discover our featured products and curated collections',
+    images: ['/og-image.jpg']
+  }
+}
 
 export default async function HomePage() {
   const [products, collections] = await Promise.all([

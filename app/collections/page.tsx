@@ -1,6 +1,31 @@
+import type { Metadata } from 'next'
 import { getCollections } from '@/lib/cosmic'
 import { Collection } from '@/types'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'Collections - Shop by Category',
+  description: 'Explore our curated product collections. From summer essentials to bestsellers, find products organized by style and theme to make shopping easier.',
+  openGraph: {
+    title: 'Collections - E-Commerce Store',
+    description: 'Explore our curated product collections organized by style and theme',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Product Collections'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Collections - E-Commerce Store',
+    description: 'Explore our curated product collections',
+    images: ['/og-image.jpg']
+  }
+}
 
 export default async function CollectionsPage() {
   const collections = await getCollections()
