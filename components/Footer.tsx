@@ -23,6 +23,11 @@ export default function Footer() {
                   Collections
                 </a>
               </li>
+              <li>
+                <a href="/about" className="text-gray-400 hover:text-white transition-colors">
+                  About
+                </a>
+              </li>
             </ul>
           </div>
           

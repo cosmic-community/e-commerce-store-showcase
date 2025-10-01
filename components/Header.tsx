@@ -24,6 +24,12 @@ export default function Header() {
             >
               Collections
             </Link>
+            <Link 
+              href="/about" 
+              className="text-gray-700 hover:text-primary transition-colors font-medium"
+            >
+              About
+            </Link>
           </div>
         </div>
       </nav>
