@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: `${productName} | E-Commerce Store`,
       description: productDescription,
-      type: 'product',
+      type: 'website',
       images: [
         {
           url: ogImageUrl,
