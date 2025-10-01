@@ -30,10 +30,16 @@ export default function Header() {
               href="/" 
               className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
+              Home
+            </Link>
+            <Link 
+              href="/products" 
+              className="text-gray-700 hover:text-primary transition-colors font-medium"
+            >
               Products
             </Link>
             <Link 
-              href="/#collections" 
+              href="/collections" 
               className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
               Collections
@@ -74,10 +80,17 @@ export default function Header() {
                 className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
                 onClick={closeMobileMenu}
               >
+                Home
+              </Link>
+              <Link 
+                href="/products" 
+                className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
+                onClick={closeMobileMenu}
+              >
                 Products
               </Link>
               <Link 
-                href="/#collections" 
+                href="/collections" 
                 className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
                 onClick={closeMobileMenu}
               >

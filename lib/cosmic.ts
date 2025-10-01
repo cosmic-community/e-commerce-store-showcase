@@ -62,6 +62,62 @@ export async function getCollections() {
   }
 }
 
+// Fetch single collection by slug
+export async function getCollection(slug: string) {
+  try {
+    const response = await cosmic.objects
+      .findOne({ type: 'collections', slug })
+      .props(['id', 'title', 'slug', 'metadata']);
+    
+    return response.object;
+  } catch (error) {
+    if (hasStatus(error) && error.status === 404) {
+      return null;
+    }
+    throw error;
+  }
+}
+
+// Fetch products by collection slug
+export async function getProductsByCollection(collectionSlug: string) {
+  try {
+    // First get the collection to find its ID
+    const collection = await getCollection(collectionSlug);
+    
+    if (!collection) {
+      return [];
+    }
+
+    // Fetch all products and filter by collection ID
+    const response = await cosmic.objects
+      .find({ type: 'products' })
+      .props(['id', 'title', 'slug', 'metadata'])
+      .depth(1);
+    
+    // Filter products that have this collection
+    const products = response.objects.filter((product: any) => {
+      const productCollections = product.metadata?.collections;
+      if (!productCollections) return false;
+      
+      if (Array.isArray(productCollections)) {
+        return productCollections.some((col: any) => {
+          const collectionId = typeof col === 'string' ? col : col.id;
+          return collectionId === collection.id;
+        });
+      }
+      
+      return false;
+    });
+
+    return products;
+  } catch (error) {
+    if (hasStatus(error) && error.status === 404) {
+      return [];
+    }
+    throw new Error('Failed to fetch products by collection');
+  }
+}
+
 // Fetch reviews for a specific product
 export async function getProductReviews(productId: string) {
   try {
