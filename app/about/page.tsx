@@ -1,8 +1,27 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About Us - E-Commerce Store',
-  description: 'Learn more about our store, our mission, and our commitment to quality products',
+  title: 'About Us - Our Story and Mission',
+  description: 'Learn more about our store, our mission, and our commitment to quality products. Discover what makes us different and why customers trust us for their shopping needs.',
+  openGraph: {
+    title: 'About Us | E-Commerce Store',
+    description: 'Learn more about our store, our mission, and our commitment to quality products',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'About E-Commerce Store'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Us | E-Commerce Store',
+    description: 'Learn more about our store and our commitment to quality',
+    images: ['/og-image.jpg']
+  }
 }
 
 export default function AboutPage() {
