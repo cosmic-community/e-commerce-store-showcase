@@ -85,8 +85,12 @@ export default function Header() {
               </Link>
               <Link 
                 href="/products" 
+              <Link 
+                href="/cart" 
                 className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
                 onClick={closeMobileMenu}
+              >
+                Cart
               >
                 🛍️ Products
               </Link>
