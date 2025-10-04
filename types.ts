@@ -54,6 +54,26 @@ export interface Review extends CosmicObject {
     verified_purchase?: boolean;
   };
 }
+// Order type
+export interface Order extends CosmicObject {
+  type: 'orders';
+  metadata: {
+    customer_name: string;
+    customer_email: string;
+    shipping_address: string;
+    city: string;
+    postal_code: string;
+    country: string;
+    items: Array<{
+      product_id: string;
+      product_name: string;
+      quantity: number;
+      price: number;
+    }>;
+    total_amount: number;
+    order_status: string;
+  };
+}
 
 // API response types
 export interface CosmicResponse<T> {
