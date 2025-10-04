@@ -30,25 +30,25 @@ export default function Header() {
               href="/" 
               className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
-              Home
+              🏠 Home
             </Link>
             <Link 
               href="/products" 
               className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
-              Products
+              🛍️ Products
             </Link>
             <Link 
               href="/collections" 
               className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
-              Collections
+              📦 Collections
             </Link>
             <Link 
               href="/about" 
               className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
-              About
+              ℹ️ About
             </Link>
           </div>
 
@@ -80,28 +80,29 @@ export default function Header() {
                 className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
                 onClick={closeMobileMenu}
               >
-                Home
+                🏠 Home
               </Link>
               <Link 
                 href="/products" 
                 className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
                 onClick={closeMobileMenu}
               >
-                Products
+                🛍️ Products
               </Link>
               <Link 
                 href="/collections" 
                 className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
                 onClick={closeMobileMenu}
               >
-                Collections
+                📦 Collections
               </Link>
               <Link 
                 href="/about" 
                 className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
                 onClick={closeMobileMenu}
               >
-                About
+                ℹ️ About
+<!-- FILE_SEPARATOR -->
               </Link>
             </div>
           </div>
