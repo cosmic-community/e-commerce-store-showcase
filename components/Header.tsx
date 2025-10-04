@@ -1,7 +1,7 @@
 'use client'
 
-import Link from 'next/link'
-import { useState } from 'react'
+  import { useState } from 'react'
+  import CartButton from './CartButton'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -50,6 +50,7 @@ export default function Header() {
             >
               ℹ️ About
             </Link>
+            <CartButton />
           </div>
 
           {/* Mobile Menu Button */}
@@ -71,6 +72,7 @@ export default function Header() {
           </button>
         </div>
 
+        {/* Mobile Navigation Menu */}
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
@@ -103,8 +105,25 @@ export default function Header() {
               >
                 ℹ️ About
               </Link>
+              <Link 
+                href="/cart" 
+                className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
+                onClick={closeMobileMenu}
+              >
+                🛒 Cart
+              </Link>
             </div>
           </div>
+        )}
+                href="/cart" 
+                className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
+                onClick={closeMobileMenu}
+              >
+                🛒 Cart
+              </Link>
+            </div>
+          </div>
+        )}
         )}
       </nav>
     </header>

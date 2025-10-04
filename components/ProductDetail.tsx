@@ -1,7 +1,7 @@
-'use client'
-
-import { useState } from 'react'
-import { Product } from '@/types'
+  'use client'
+  import { useState } from 'react'
+  import { Product } from '@/types'
+  import { useCart } from '@/context/CartContext'
 
 interface ProductDetailProps {
   product: Product
@@ -94,6 +94,84 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             dangerouslySetInnerHTML={{ __html: description }}
           />
         )}
+        <div className="border-t pt-6 space-y-4">
+          <div className="flex items-center gap-4">
+            <label htmlFor="quantity" className="font-semibold text-gray-900">
+              Quantity:
+            </label>
+            <div className="flex items-center border border-gray-300 rounded-lg">
+              <button
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                className="px-4 py-2 hover:bg-gray-100 transition-colors"
+                disabled={!inStock}
+              >
+                −
+              </button>
+              <span className="px-6 py-2 border-x border-gray-300">
+                {quantity}
+              </span>
+              <button
+                onClick={() => setQuantity(quantity + 1)}
+                className="px-4 py-2 hover:bg-gray-100 transition-colors"
+                disabled={!inStock}
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <button
+            onClick={handleAddToCart}
+            disabled={!inStock}
+            className={`w-full py-4 rounded-lg font-semibold text-lg transition-colors ${
+              addedToCart
+                ? 'bg-green-600 text-white'
+                : inStock
+                ? 'bg-primary text-white hover:bg-primary-dark'
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            }`}
+          >
+            {addedToCart ? '✓ Added to Cart!' : inStock ? 'Add to Cart' : 'Out of Stock'}
+          </button>
+        </div>
+        <div className="border-t pt-6 space-y-4">
+          <div className="flex items-center gap-4">
+            <label htmlFor="quantity" className="font-semibold text-gray-900">
+              Quantity:
+            </label>
+            <div className="flex items-center border border-gray-300 rounded-lg">
+              <button
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                className="px-4 py-2 hover:bg-gray-100 transition-colors"
+                disabled={!inStock}
+              >
+                −
+              </button>
+              <span className="px-6 py-2 border-x border-gray-300">
+                {quantity}
+              </span>
+              <button
+                onClick={() => setQuantity(quantity + 1)}
+                className="px-4 py-2 hover:bg-gray-100 transition-colors"
+                disabled={!inStock}
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <button
+            onClick={handleAddToCart}
+            disabled={!inStock}
+            className={`w-full py-4 rounded-lg font-semibold text-lg transition-colors ${
+              addedToCart
+                ? 'bg-green-600 text-white'
+                : inStock
+                ? 'bg-primary text-white hover:bg-primary-dark'
+                : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            }`}
+          >
+            {addedToCart ? '✓ Added to Cart!' : inStock ? 'Add to Cart' : 'Out of Stock'}
+          </button>
+        </div>
 
         {product.metadata?.collections && Array.isArray(product.metadata.collections) && (
           <div className="border-t pt-6">
