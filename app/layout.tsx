@@ -75,8 +75,6 @@ export default function RootLayout({
           <CosmicBadge bucketSlug={bucketSlug} />
         </CartProvider>
       </body>
-        </CartProvider>
-      </body>
     </html>
   )
 }
