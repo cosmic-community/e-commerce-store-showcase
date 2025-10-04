@@ -102,7 +102,6 @@ export default function Header() {
                 onClick={closeMobileMenu}
               >
                 ℹ️ About
-<!-- FILE_SEPARATOR -->
               </Link>
             </div>
           </div>
