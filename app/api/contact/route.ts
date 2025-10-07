@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
       from: 'tony@cosmicjs.com',
       to: 'tony@cosmicjs.com',
       subject: `Contact Form: ${subject}`,
-      replyTo: email,
+        reply_to: email,
       html: `
         <!DOCTYPE html>
         <html>
