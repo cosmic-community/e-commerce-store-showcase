@@ -47,8 +47,15 @@ export default function Header() {
               href="/about" 
               className="text-gray-700 hover:text-primary transition-colors font-medium"
             >
-              ℹ️ About
-            </Link>
+                ℹ️ About
+              </Link>
+              <Link 
+                href="/contact" 
+                className="text-gray-700 hover:text-primary transition-colors font-medium"
+              >
+                📧 Contact
+              </Link>
+              <CartButton />
             <CartButton />
           </div>
 
@@ -102,8 +109,16 @@ export default function Header() {
                 className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
                 onClick={closeMobileMenu}
               >
-                ℹ️ About
-              </Link>
+                  ℹ️ About
+                </Link>
+                <Link 
+                  href="/contact" 
+                  className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
+                  onClick={closeMobileMenu}
+                >
+                  📧 Contact
+                </Link>
+                <Link
               <Link 
                 href="/cart" 
                 className="text-gray-700 hover:text-primary transition-colors font-medium px-2 py-1"
